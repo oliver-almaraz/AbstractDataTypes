@@ -18,9 +18,8 @@ void list_init(List *list, void (*destroy_data)(void *data)){
 }
 
 void list_destroy(List * list){
-	while (list->size > 0){
+	while (list->size > 0)
 		list_rem_head(list);
-	}
 	// Clear memory
 	memset(list, 0, sizeof(List));
 	// Free memory allocated for List
@@ -39,7 +38,7 @@ int list_rem_next(List *list, Node *node){
 		return -1;
 
 	// Remove element
-	old_node = node->next; // Save ponter for free()
+	old_node = node->next; // Save pointer for free()
 	node->next = node->next->next;
 
 	// If tail was removed update new tail
