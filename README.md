@@ -6,7 +6,7 @@ Header files, source code and examples for abstract datatypes implemented entire
 
 If you're new to C, remember that you must compile and link the source code of the library. It's up to you to write a makefile and/or to make sure that your compiler can find the files and objects you decide to include.
 
-### A simple way of compiling an linking the examples provided in this repository using gcc on a Linux distro:
+### A simple way of compiling an linking the examples provided in this repository using GCC on a Linux distro:
 
 Compile the lib:
 ```
