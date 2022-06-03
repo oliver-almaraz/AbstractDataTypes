@@ -1,5 +1,5 @@
 /******************************************************
-*					LinkedList.c
+*                   LinkedList.c
 *	Created & mantained by: oliver.almaraz@gmail.com
 *	for personal use. You may use and modify it.
 *	github.com/oliver-almaraz/AbstractDataTypes

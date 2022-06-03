@@ -1,16 +1,16 @@
 /******************************************************
-*					LinkedList.h
+*                    LinkedList.h
 *	Created & mantained by: oliver.almaraz@gmail.com
 *	for personal use. You may use and modify it.
 *	github.com/oliver-almaraz/AbstractDataTypes
 *******************************************************
 *
-*	Header file providing an interface for creating,
-*	destroying, adding and removing elements from a
+*	C library providing an interface for creating,
+*	destroying, adding and removing elements from
 *	singly-linked lists whose STRUCTS are dynamically
 *	allocated in the HEAP. Therefore, user should
 *	check for a NULL pointer when calling:
-*		List* alloc_list();
+*		alloc_list();
 *
 *	DATA contained by the NODES may be dyn. alloc.
 *	In that case, it's the user's responsibility to:
@@ -35,10 +35,8 @@
 *		list_destroy() or list_rem_*() are called.
 */
 
-
-
-#ifndef S_LINKED_LIST_H
-#define S_LINKED_LIST_H
+#ifndef LINKED_LIST_H
+#define LINKED_LIST_H
 
 #include <stdlib.h>
 #include <string.h>
@@ -69,7 +67,7 @@ typedef struct _list {
 
 
 /***********************************************
-*				PUBLIC INTERFACE
+*               PUBLIC INTERFACE
 ***********************************************/
 
 #define alloc_list() ((List*)malloc(sizeof(List)));
