@@ -33,6 +33,10 @@ int list_rem_next(List *list, Node *node){
 	if (list->size == 0)
 		return -1;
 
+	// Check for NULL ptr
+	if (node == NULL)
+		return -1;
+
 	// Tail was passed, there isn't a next elmt
 	if (node->next == NULL)
 		return -1;
@@ -65,23 +69,23 @@ int list_rem_head(List *list){
 	// Backup ptr to node for free()
 	Node *old_node = list->head;
 
-	if (list->size == 1){
+	if (list->size == 1)
 		// Head was the only node
 		list->head = list->tail = NULL;
-	}
-	else {
+	else
 		// Update new list's head
 		list->head = list->head->next;
-	}
 
-	list->size--;
 	// Destroy node's data;
 	if (list->destroy_data != NULL)
 		list->destroy_data(old_node->data);
+
 	// Clear memory
 	memset(old_node, 0, sizeof(Node));
 	// Free() mem alocated for removed node
 	free(old_node);
+	list->size--;
+
 	return 0;
 }
 
@@ -102,24 +106,24 @@ int list_rem_tail(List *list){
 }
 
 int list_add_head(List *list, void *data){
-	if (data == NULL || list == NULL)
+	if (list == NULL)
 		return -1;
 
-	Node *node = (Node*)calloc(1, sizeof(Node));	
-	if (node == NULL)
+	Node *new_node = (Node*)calloc(1, sizeof(Node));	
+	if (new_node == NULL)
 		return -1;
 	
-	node->data = data;
+	new_node->data = data;
 
 	if (list->tail == NULL) {
 		// If This is the first node added
 		// it's also the tail
-		list->tail = node;
-		node->next = NULL;
-	} else {
-		node->next = list->head;
-	}
-	list->head = node;
+		list->tail = new_node;
+		new_node->next = NULL;
+	} else
+		new_node->next = list->head;
+
+	list->head = new_node;
 
 	list->size++;
 	return 0;
@@ -140,9 +144,8 @@ int list_add_tail(List *list, void *data){
 		// If this is the first node added
 		// it's also the head
 		list->head = node;
-	} else {
+	} else
 		list->tail->next = node;
-	}
 
 	list->tail = node;
 	list->size++;

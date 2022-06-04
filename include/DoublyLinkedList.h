@@ -6,7 +6,7 @@
 *******************************************************
 *
 *	C library providing an interface for creating,
-*	destroying, adding and removing elemente from
+*	destroying, adding and removing elements from
 *	doubly-linked lists whose STRUCTS are dynamically
 *	allocated in the HEAP. Therefore, user should
 *	check for a NULL pointer when calling:
@@ -73,9 +73,9 @@ typedef struct _DList {
 #define alloc_dlist() ((DList*)malloc(sizeof(DList)));
 
 void dlist_init(DList *list, void (*destroy_data)(void *data));
+int dlist_rem(DList *list, DNode *node);
 void dlist_destroy(DList *list);
 int dlist_ins_next(DList *list, DNode *node, void *data);
 int dlist_ins_prev(DList *list, DNode *node, void *data);
-int dlist_rem(DList *list, DNode *node, void *data);
 
 #endif

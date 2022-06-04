@@ -5,18 +5,18 @@
 *	github.com/oliver-almaraz/AbstractDataTypes
 *******************************************************
 *
-*	Simple example of implementation of the singly-linked
+*	Simple example of implementation of a singly-linked
 *	list using the provided library.
 *	In this example, the DATA (strings) passed to the list
 *	is copied from a global array (ingredienti[]) to the
-*	HEAP calling createData(), which returns a void ptr
-*	to the dyn. allocated string.
+*	HEAP calling createData(), which returns a ptr to the
+*	dyn. allocated string.
 *	Because this implementation uses dynamically allocated
 *	DATA, a custom destroyData() function has to be passed
 *	as the second argument to list_init() to free() DATA
 *	every time user calls list_rem_*() or list_destroy().
 *
-*	Function printList() displays the strings contained
+*	Function printList() displays all the strings contained
 *	in the list (list->node->data).
 */
 
@@ -42,7 +42,7 @@ int main(){
     list_init(Carbonara, destroyData);
 
 	for (int i=0; i<6; i++)
-		list_add_head(Carbonara, (createData(ingredienti[i])));
+		list_add_head(Carbonara, createData(ingredienti[i]));
 
 	printf("All elements added to HEAD:\n");
     printList(Carbonara);

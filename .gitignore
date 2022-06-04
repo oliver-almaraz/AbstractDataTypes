@@ -5,7 +5,6 @@
 # Object files
 *.o
 
-
 # Linker output
 *.ilk
 *.map
@@ -36,3 +35,6 @@
 *.su
 *.idb
 *.pdb
+
+# IDE onfig files
+*.json
