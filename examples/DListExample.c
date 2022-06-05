@@ -19,9 +19,9 @@
 *	Function printList() displays the strings contained
 *	in the list (list->node->data).
 *
-*   Function findNode() returns a pointer to the NODE of
-*   the LIST that contains the STRING passed as the second
-*   parameter. It returns NULL if STRING was not found.
+*	Function findNode() returns a pointer to the NODE of
+*	the LIST that contains the STRING passed as the second
+*	parameter. It returns NULL if STRING was not found.
 */
 
 #include <stdio.h>
@@ -41,26 +41,26 @@ const char *ingredienti[4] = {
 };
 
 int main(){
-    DList *Gnocchi = alloc_dlist();
+	DList *Gnocchi = alloc_dlist();
 	if (Gnocchi == NULL)
 		return -1;
-    dlist_init(Gnocchi, destroyData);
+	dlist_init(Gnocchi, destroyData);
 
 	for (int i=0; i<4; i++)
 		dlist_ins_next(Gnocchi, Gnocchi->tail, createData(ingredienti[i]));
 
-    printf("All the elements added to the list:\n");
-    printList(Gnocchi);
+	printf("All the elements added to the list:\n");
+	printList(Gnocchi);
 
-    printf("\nThe node before 'Semola':\n");
-    DNode *semola = findNode(Gnocchi, "Semola");
-    printf(semola->prev->data);
+	printf("\nThe node before 'Semola':\n");
+	DNode *semola = findNode(Gnocchi, "Semola");
+	printf(semola->prev->data);
 
-    printf("\n\nInsert 'Sale' before 'Semola':\n");
-    dlist_ins_prev(Gnocchi, semola, createData("Sale"));
-    printList(Gnocchi);
+	printf("\n\nInsert 'Sale' before 'Semola':\n");
+	dlist_ins_prev(Gnocchi, semola, createData("Sale"));
+	printList(Gnocchi);
 
-    dlist_destroy(Gnocchi);
+	dlist_destroy(Gnocchi);
 }
 
 void destroyData(void* data){
@@ -69,30 +69,30 @@ void destroyData(void* data){
 }
 
 void* createData(const char* string){
-    char *data = (char*)malloc(strlen(string)+sizeof('\0'));
-    strcpy(data, string);
-    return (void*)data;
+	char *data = (char*)malloc(strlen(string)+sizeof('\0'));
+	strcpy(data, string);
+	return (void*)data;
 }
 
 void printList(DList* list){
 	// Nothing to print from empty list
-    if (list->size == 0)
-        return;
+	if (list->size == 0)
+		return;
 
-    DNode *current = list->head;
+	DNode *current = list->head;
 	while (current != NULL){
-        printf("%s\n", current->data);
-        current = current->next;
+		printf("%s\n", current->data);
+		current = current->next;
 	}
 }
 
 DNode* findNode(DList *list, const char *string){
-    DNode *current = list->head;
+	DNode *current = list->head;
 	while (current != NULL){
-        if (strcmp(current->data, string) == 0)
-            return current;
-        else
-            current = current->next;
+		if (strcmp(current->data, string) == 0)
+			return current;
+		else
+			current = current->next;
 	}
-    return NULL;
+	return NULL;
 }

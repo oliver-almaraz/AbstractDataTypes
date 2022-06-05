@@ -36,16 +36,16 @@ const char *ingredienti[6] = {
 };
 
 int main(){
-    List *Carbonara = alloc_list();
+	List *Carbonara = alloc_list();
 	if (Carbonara == NULL)
 		return -1;
-    list_init(Carbonara, destroyData);
+	list_init(Carbonara, destroyData);
 
 	for (int i=0; i<6; i++)
 		list_add_head(Carbonara, createData(ingredienti[i]));
 
 	printf("All elements added to HEAD:\n");
-    printList(Carbonara);
+	printList(Carbonara);
 
 	list_rem_head(Carbonara);
 	printf("\nHead removed:\n");
@@ -74,19 +74,19 @@ void destroyData(void* data){
 }
 
 void* createData(const char* string){
-    char *data = (char*)malloc(strlen(string)+sizeof('\0'));
-    strcpy(data, string);
-    return (void*)data;
+	char *data = (char*)malloc(strlen(string)+sizeof('\0'));
+	strcpy(data, string);
+	return (void*)data;
 }
 
 void printList(List* list){
 	// Nothing to print from empty list
-    if (list->size == 0)
-        return;
+	if (list->size == 0)
+		return;
 
-    Node *current = list->head;
+	Node *current = list->head;
 	while (current != NULL){
-        printf("%s\n", current->data);
-        current = current->next;
+		printf("%s\n", current->data);
+		current = current->next;
 	}
 }
