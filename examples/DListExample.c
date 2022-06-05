@@ -13,15 +13,15 @@
 *	dyn. allocated string.
 *	Because this implementation uses dynamically allocated
 *	DATA, a custom destroyData() function has to be passed
-*	as the second argument to list_init() to free() DATA
-*	every time user calls list_rem() or list_destroy().
+*	as the second argument to dlist_init() to free() DATA
+*	every time user calls dlist_rem() or dlist_destroy().
 *
 *	Function printList() displays the strings contained
 *	in the list (list->node->data).
 *
 *	Function findNode() returns a pointer to the NODE of
 *	the LIST that contains the STRING passed as the second
-*	parameter. It returns NULL if STRING was not found.
+*	argument. It returns NULL if STRING was not found.
 */
 
 #include <stdio.h>
