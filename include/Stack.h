@@ -34,7 +34,10 @@
 *	Finally, stack_peek() returns a ptr to the data of
 *	the element at the top of the stack without
 *	popping it.
-*/
+*******************************************************
+*   You should always check for a NULL pointer
+*   when calling stack_peek() and stack_pop();
+******************************************************/
 
 #ifndef STACK_H
 #define STACK_H
