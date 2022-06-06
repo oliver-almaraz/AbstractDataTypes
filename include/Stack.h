@@ -35,8 +35,8 @@
 *	the element at the top of the stack without
 *	popping it.
 *******************************************************
-*   You should always check for a NULL pointer
-*   when calling stack_peek() and stack_pop();
+*	You should always check for a NULL pointer
+*	when calling stack_peek() and stack_pop();
 ******************************************************/
 
 #ifndef STACK_H
