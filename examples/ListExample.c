@@ -36,7 +36,7 @@ const char *ingredienti[6] = {
 };
 
 int main(){
-	List *Carbonara = alloc_list();
+	List *Carbonara = list_alloc();
 	if (Carbonara == NULL)
 		return -1;
 	list_init(Carbonara, destroyData);

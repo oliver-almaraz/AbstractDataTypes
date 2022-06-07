@@ -10,7 +10,7 @@
 *	doubly-linked lists whose STRUCTS are dynamically
 *	allocated in the HEAP. Therefore, user should
 *	check for a NULL pointer when calling:
-*		alloc_dlist();
+*		dlist_alloc();
 *
 *	DATA contained by the NODES may be dyn. alloc.
 *	In that case, it's the user's responsibility to:
@@ -30,7 +30,7 @@
 *
 *	The user must NOT worry about:
 *	- Allocating memory for the list's structs
-*		(call alloc_dlist() instead).
+*		(call dlist_alloc() instead).
 *	- Freeing memory allocated for the structs if
 *		dlist_destroy() or dlist_rem() are called.
 */
@@ -70,7 +70,7 @@ typedef struct _DList {
 *              PUBLIC INTERFACE
 ***********************************************/
 
-#define alloc_dlist() ((DList*)malloc(sizeof(DList)));
+#define dlist_alloc() ((DList*)malloc(sizeof(DList)));
 
 void dlist_init(DList *list, void (*destroy_data)(void *data));
 int dlist_rem(DList *list, DNode *node);

@@ -41,7 +41,7 @@ const char *ingredienti[4] = {
 };
 
 int main(){
-	DList *Gnocchi = alloc_dlist();
+	DList *Gnocchi = dlist_alloc();
 	if (Gnocchi == NULL)
 		return -1;
 	dlist_init(Gnocchi, destroyData);

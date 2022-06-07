@@ -10,16 +10,8 @@
 #include "LinkedList.h"
 #include "Stack.h"
 
-void stack_init(Stack *stack){
-	list_init(stack, NULL);
-}
-
-int stack_push(Stack *stack,  void *data){
-	return list_add_head(stack, data);
-}
-
 void* stack_pop(Stack *stack){
-	Stack *data = stack_peek(stack);
+	void* data = stack_peek(stack);
 	list_rem_head(stack);
 
 	return data;

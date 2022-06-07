@@ -10,7 +10,7 @@
 *	singly-linked lists whose STRUCTS are dynamically
 *	allocated in the HEAP. Therefore, user should
 *	check for a NULL pointer when calling:
-*		alloc_list();
+*		list_alloc();
 *
 *	DATA contained by the NODES may be dyn. alloc.
 *	In that case, it's the user's responsibility to:
@@ -30,7 +30,7 @@
 *
 *	The user must NOT worry about:
 *	- Allocating memory for the list's structs
-*		(call alloc_list() instead).
+*		(call list_alloc() instead).
 *	- Freeing memory allocated for the structs if
 *		list_destroy() or list_rem_*() are called.
 */
@@ -70,7 +70,7 @@ typedef struct _list {
 *               PUBLIC INTERFACE
 ***********************************************/
 
-#define alloc_list() ((List*)malloc(sizeof(List)));
+#define list_alloc() (List*)malloc(sizeof(List))
 
 void list_init(List *list, void (*destroy_data)(void *data));
 void list_destroy(List *list);

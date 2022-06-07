@@ -36,7 +36,8 @@
 *	popping it.
 *******************************************************
 *	You should always check for a NULL pointer
-*	when calling stack_peek() and stack_pop();
+*	when calling stack_peek() and stack_pop(),
+*	as well as stack_alloc().
 ******************************************************/
 
 #ifndef STACK_H
@@ -52,10 +53,11 @@ typedef List Stack;
 *               PUBLIC INTERFACE
 ***********************************************/
 
+#define stack_alloc() (Stack*)malloc(sizeof(Stack))
+#define stack_init(stack) list_init((stack), NULL)
+#define stack_push(stack, data) list_add_head((stack), (data))
 #define stack_peek(stack) ((stack)->head == NULL ? NULL : (stack)->head->data)
 
-void stack_init(Stack *stack);
-int stack_push(Stack *stack,  void *data);
 void* stack_pop(Stack *stack);
 void stack_destroy(Stack *stack, void (*destroy_data)(void *data));
 
