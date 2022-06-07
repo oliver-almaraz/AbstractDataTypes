@@ -41,8 +41,12 @@ int main(){
 		return -1;
 	list_init(Carbonara, destroyData);
 
-	for (int i=0; i<6; i++)
-		list_add_head(Carbonara, createData(ingredienti[i]));
+	for (int i=0; i<6; i++){
+		void *data = createData(ingredienti[i]);
+		if (data == NULL)
+			return -1;
+		list_add_head(Carbonara, data);
+	}
 
 	printf("All elements added to HEAD:\n");
 	printList(Carbonara);
@@ -75,6 +79,8 @@ void destroyData(void* data){
 
 void* createData(const char* string){
 	char *data = (char*)malloc(strlen(string)+sizeof('\0'));
+	if (data == NULL)
+		return NULL;
 	strcpy(data, string);
 	return (void*)data;
 }

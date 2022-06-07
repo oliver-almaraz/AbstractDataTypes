@@ -46,8 +46,12 @@ int main(){
 		return -1;
 	dlist_init(Gnocchi, destroyData);
 
-	for (int i=0; i<4; i++)
-		dlist_ins_next(Gnocchi, Gnocchi->tail, createData(ingredienti[i]));
+	for (int i=0; i<4; i++){
+		void *data = createData(ingredienti[i]);
+		if (data == NULL)
+			return -1;
+		dlist_ins_next(Gnocchi, Gnocchi->tail, data);
+	}
 
 	printf("All the elements added to the list:\n");
 	printList(Gnocchi);
@@ -70,6 +74,8 @@ void destroyData(void* data){
 
 void* createData(const char* string){
 	char *data = (char*)malloc(strlen(string)+sizeof('\0'));
+	if (data == NULL)
+		return NULL;
 	strcpy(data, string);
 	return (void*)data;
 }

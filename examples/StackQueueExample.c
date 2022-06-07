@@ -82,6 +82,13 @@ int main(){
 	Book *Metamorphoses = createData("Ovid", "Metamorphoses", 807);
 	Book *Faust = createData("Goethe", "Faust", 456);
 
+	// Always check for NULL ptr
+	Book *books[4] = {Illiad, Anabasis, Metamorphoses, Faust};
+	for (int i=0; i<4; i++){
+		if (books[i] == NULL)
+			return -1;
+	}
+
 	// Push BOOKS to toRead STACK
 	stack_push(toRead, Illiad);
 	stack_push(toRead, Anabasis);
@@ -96,7 +103,9 @@ int main(){
 	displayBoth(toRead, finishedBooks);
 
 	// Push new Book to Stack
-	Book *Aeneid = createData("Virgil", "Aeneid", 1024);
+	Book *Aeneid = createData("Virgil", "Aeneid", 1036);
+	if (Aeneid == NULL)
+		return -1;
 	stack_push(toRead, Aeneid);
 	printf("\n\nNew book pushed to toRead stack:\n\n");
 	displayBoth(toRead, finishedBooks);
@@ -116,14 +125,22 @@ int main(){
 
 Book* createData(const char *author, const char *title, int pages){
 	Book *book = (Book*)malloc(sizeof(Book));
+	if (book == NULL)
+		return NULL;
 	
 	book->author = (char*)malloc(sizeof(strlen(author))+1);
+	if (book->author == NULL)
+		return NULL;
 	strcpy(book->author, author);
 
 	book->title = (char*)malloc(sizeof(strlen(title))+1);
+	if (book->title == NULL)
+		return NULL;
 	strcpy(book->title, title);
 
 	book->pages = (int*)malloc(sizeof(int));
+	if (book->pages == NULL)
+		return NULL;
 	*(book->pages) = pages;
 
 	return book;
