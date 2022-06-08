@@ -9,9 +9,9 @@
 *	QUEUE with the provided libraries.
 *
 *	In this example, the DATA contained by the nodes of
-*	both DS (in this libraries, Queues and Stacks are
-*	implemented on top of a Singly-Linked List) are
-*	structs (Book) with three members each.
+*	both DS are structs (Book) with three members each.
+*	(In this libraries, Queues and Stacks are
+*	implemented on top of a Singly-Linked List)
 *
 *	User-defined functions are created for dynamically
 *	allocating DATA to be used with the DS, for freeing
