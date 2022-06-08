@@ -1,12 +1,21 @@
 # Abstract Data Types
 Header files, source code and examples for abstract datatypes implemented entirely in C.
 
+## ADTs covered so far:
+  - Singly-Linked Lists
+  - Doybly-Linked Lists
+  - Stacks
+  - Queues
+  - Chained Hash Tables
+  - Binary Trees (in process)
+  - Binary Search Trees (in process)
+
 ## How to use these libraries
 **You will find most of the information you need in the header files located under `AbstractDataTypes/include` .**
 
 If you're new to C, remember that you must compile and link the source code of the library. It's up to you to write a makefile and/or to make sure that your compiler can find the files and objects you decide to include.
 
-### A simple way of compiling an linking the examples provided in this repository using GCC on a Linux distro:
+### A simple way of compiling and linking the examples provided in this repository using GCC on a Linux distro:
 
 Compile the lib:
 ```
@@ -32,7 +41,6 @@ They had been lying around among other long-forgotten, unfinished projects until
 Since some of my new projects require the use of some of the abstract datatypes for which I had already written some libs, I committed myself to writing cleaner, simpler and self-explaining versions to make them a lot easier to include and use.
 
 Since these libraries were made for my own personal use, I often **preferred simplicity over abstraction**. You therefore might need to modify these libs to either make them match your specific implementation or to make them more abstract, if you consider it's worth the hassle.
-However, I trust they will be adequate for most of the implementations out there.
 
 ## References
 I used as references for writing these libraries mainly Kyle Loudon's **"Mastering Algorithms with C"** and Richard Reese's **"Understanding and Using C Pointers"**, both published by O'Reilly & Associates.
