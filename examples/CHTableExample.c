@@ -46,9 +46,7 @@ Book* createData(const char *author, const char *title, int pages);
 // Frees dyn alloc mem from the Book struct and elmts
 void destroyData(void *book);
 
-// Compare the member "title" in the structs passed.
-// Used to find an element in TABLE
-// It returns a non-zero value if both keys match
+// Returns a non-zero value if both structs match
 int match(void *struct1, void *struct2);
 
 
@@ -127,6 +125,6 @@ void destroyData(void *book){
     free(book);
 }
 
-int match(void *key1, void *key2){
-	return ((key1 == key2) ? TRUE : FALSE);
+int match(void *struct1, void *struct2){
+	return ((struct1 == struct2) ? TRUE : FALSE);
 }
