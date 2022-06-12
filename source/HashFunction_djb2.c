@@ -12,11 +12,12 @@
 // Read Header file:
 #include "HashFunction_djb2.h"
 
-unsigned long hash(unsigned char *str){
+unsigned long hash_djb2(void *str){
 	unsigned long hash = 5381;
 	int c;
+	unsigned char *string = (unsigned char*)str;
 
-	while (c = *str++)
+	while (c = *string++)
 		hash = ((hash << 5) + hash) + c;	
 	return hash;
 }

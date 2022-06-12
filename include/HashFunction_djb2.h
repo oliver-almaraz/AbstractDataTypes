@@ -21,6 +21,6 @@
 #ifndef HASH_FUNCTION_DJB2
 #define HASH_FUNCTION_DJB2
 
-unsigned long hash(unsigned char *str);
+unsigned long hash_djb2(void *str);
 
 #endif
