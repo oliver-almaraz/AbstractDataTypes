@@ -18,8 +18,8 @@
 *	Queue_init(stack) calls list_init(queue, NULL).
 *	Passing NULL instead of a destroy_data() fn allows
 *	the user to use the data stored in the HEAD
-*	after queue_dequeue() is called: stack_pop()
-*	returns a pointer to it.
+*	after queue_dequeue() is called: it returns a void
+*	pointer to it.
 *******************************************************
 *	As a consecuence, the user is ALWAYS responsible
 *	for freeing dyn. alloc. data after queue_dequeue()
