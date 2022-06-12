@@ -13,7 +13,7 @@
 
 int chtable_init (
 	ChainedHashTable *ch_table, int buckets,
-	int (*hash_fn)(void *key),
+	long unsigned int (*hash_fn)(void *key),
 	int (*match)( void *key1, void *key2),
 	void (*destroy_data)(void *data)
 )
@@ -130,8 +130,16 @@ int chtable_remove(ChainedHashTable *ch_table, void *data){
 }
 
 void chtable_destroy(ChainedHashTable *ch_table){
-	for (int i=0; 1 < ch_table->buckets; i++)
-		list_destroy(&ch_table->table[i]);
+	// We cannot use list_destroy() here because that
+	// fn assumes that we allocated each list individually
+	// with list_alloc(), and we didn't.
+	for (int i=0; i < ch_table->buckets; i++){
+		List *bucket = &ch_table->table[i];
+		while (bucket->size > 0)
+		    list_rem_head(bucket);
+		// Clear
+		memset(bucket, 0, sizeof(List));
+	}
 	// Mem for the buckets was allocated contigu.
 	// and is now freed as a single pointer
 	free(ch_table->table);

@@ -25,15 +25,9 @@
 *
 *	chtable_lookup() calls the MATCH function passed
 *	to chtable_init() to compare its second argument
-*	with the data contained in the BUCKET's (L. List)
-*	element (node). If the element is found in the
-*	TABLE, chtable_lookup returns a pointer to the
+*	with the elements in the TABLE. If the element is
+*	found, chtable_lookup returns a pointer to the
 *	DATA element of the node (list->node->data).
-*	A common scenario is to store structs as the DATA
-*	in the NODES and have a MATCH fn that compares
-*	only one member of that struct: you search for
-*	one member of the struct and you get a pointer
-*	to the whole struct with chtable_lookup()
 *
 ********************************************************
 *	chtable_remove() DESTROYS the element passed to it
@@ -65,7 +59,7 @@ typedef struct ChainedHashTable_ {
 	int size; // Number of elements
 
 	// Hash function
-	int (*hash_fn)(void *key);
+	long unsigned int (*hash_fn)(void *key);
 	// Match function
 	int (*match)(void *key1, void *key2);
 
@@ -84,7 +78,7 @@ typedef struct ChainedHashTable_ {
 
 int chtable_init(
 	ChainedHashTable *ch_table, int buckets,
-	int (*hash_fn)(void *key),
+	long unsigned int (*hash_fn)(void *key),
 	int (*match)(void *key1, void *key2),
 	void (*destroy)(void *data)
 );
